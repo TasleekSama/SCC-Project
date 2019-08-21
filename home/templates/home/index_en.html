@@ -1,0 +1,302 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> 
+<html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+        {% load static %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Newline CSS Template with a video background</title>
+<!--
+Newline Template
+http://www.templatemo.com/tm-503-newline
+-->
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <!--===============================================================================================-->  
+      <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'home/table/vendor/bootstrap/css/bootstrap.min.css' %}">
+      <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'home/table/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+      <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'home/table/vendor/animate/animate.css' %}">
+      <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'home/table/vendor/select2/select2.min.css' %}">
+      <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'home/table/vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+      <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'home/table/css/util.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'home/table/css/main.css' %}">
+      <!--===============================================================================================-->
+
+        <link rel="stylesheet" href="{% static 'home/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'home/css/bootstrap-theme.min.css' %}">
+        <link rel="stylesheet" href="{% static 'home/css/fontAwesome.css' %}">
+        <link rel="stylesheet" href="{% static 'home/css/templatemo-style_en.css' %}">
+
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+        <script src="{% static 'home/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
+    </head>
+    <body>
+
+        {% load subtract %}
+
+        <div class="overlay"></div>
+        <section class="top-part">
+          <img src="{% static 'home/img/0001.jpg' %}">
+          <!--<video controls autoplay loop>
+            <source src="{% static 'home/videos/video.mp4' %}" type="video/mp4">
+            <source src="{% static 'home/videos/video.ogg' %}" type="video/ogg">
+          Your browser does not support the video tag.
+          </video>-->
+        </section>
+        
+        <section class="cd-hero">
+
+          <div class="cd-slider-nav">
+            <nav>
+              <span class="cd-marker item-1"></span>
+              <ul>
+                <li class="selected"><a href="#0"><div class="image-icon"><img src="{% static 'home/img/home-icon.png' %}"></div><h6>Welcome</h6></a></li>
+                <li><a href="#0"><div class="image-icon"><img src="{% static 'home/img/about-icon.png' %}"></div><h6>Activities</h6></a></li>
+                <li><a href="#0"><div class="image-icon"><img src="{% static 'home/img/featured-icon.png' %}"></div><h6>Points</h6></a></li>
+                <li><a href="#0"><div class="image-icon"><img src="{% static 'home/img/contact-icon.png' %}"></div><h6>Contact Us</h6></a></li>
+                <li onclick="location.href='{% url 'home:home' %}';"><a href="#0"><div class="image-icon"><img src="https://img.icons8.com/ios-glyphs/60/000000/language.png"></div><h6>عربي</h6></a></li>
+              </ul>
+            </nav> 
+          </div> <!-- .cd-slider-nav -->
+
+          <ul class="cd-hero-slider">
+
+            <li class="selected">
+              <div class="heading">
+                <h1>Welcome To</h1>
+                <span>Social Cultural Club</span>
+              </div>
+              <div class="cd-full-width first-slide">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="content first-content">
+                        <h4>Our Vision</h4>
+                        <p>To raise our college through excellence in different various 
+events and extracurricular activities, which would result to a 
+leading position among the University's colleges, as well as 
+other universities in the kingdom.</p>
+<br>
+<br>
+                        <h4>Our Message</h4>
+                        <p>Improving students skills through participating in various 
+extracurricular activities, which would nurture moral 
+principles and good ethics in the students to help them 
+thrive in the workplace environment.</p>
+                      </div>
+                    </div>
+                  </div>                  
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="heading">
+                <h1>Activities</h1>
+                <span>Here you can see our Weekly Activities</span> 
+              </div>
+              <div class="cd-half-width second-slide">   
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="content second-content">
+                        {% for activity in activities %}
+                        {% if forloop.counter0|divisibleby:2 %}
+                        <div class="row">
+                          <div class="col-md-7 left-image">
+                            <img src="{% static 'home/img/pic/week' %}{{ forloop.counter }}.jpg">
+                          </div>
+                          <div class="col-md-5">
+                            <div class="right-about-text">
+                              <h4>{{ activity.activity_name_en }}</h4>
+                              <p>Sunday:   -> {{ activity.day_one_en }}</p>
+                              <p>Monday    -> {{ activity.day_two_en }}</p>
+                              <p>Tuesday   -> {{ activity.day_three_en }}</p>
+                              <p>Wednesday -> {{ activity.day_four_en }}</p>
+                              <p>Thursday  -> {{ activity.day_five_en }}</p>
+                              <div class="primary-button">
+                                <a href="{{ activity.activity_image }}">Pictures</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        {% else %}
+                        <div class="row">
+                          <div class="col-md-7">
+                            <div class="left-about-text">
+                              <h4>{{ activity.activity_name_en }}</h4>
+                              <p>Sunday:   -> {{ activity.day_one_en }}</p>
+                              <p>Monday    -> {{ activity.day_two_en }}</p>
+                              <p>Tuesday   -> {{ activity.day_three_en }}</p>
+                              <p>Wednesday -> {{ activity.day_four_en }}</p>
+                              <p>Thursday  -> {{ activity.day_five_en }}</p>
+                              <div class="primary-button">
+                                <a href="{{ activity.activity_image }}">Pictures</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-5 right-image">
+                            <img src="{% static 'home/img/pic/week' %}{{ forloop.counter }}.jpg">
+                          </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>                  
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="heading">
+                <h1>Points</h1>
+                <span>Here you can see your Weekly Points</span> 
+              </div>
+              <div class="cd-half-width third-slide">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="content third-content">
+                        <div class="limiter">
+                          <div class="container-table100">
+                            <div class="wrap-table100">
+                                <div class="table">
+                                  <div class="row header">
+                                    <div class="cell">
+                                      Name
+                                    </div>
+                                    <div class="cell">
+                                      Total Points
+                                    </div>
+                                    <div class="cell">
+                                      Weekly Points
+                                    </div>
+                                  </div>
+                                  {% for member in members %}
+                                  <div class="row">
+                                    <div class="cell" data-title="Full Name">
+                                      {{ member.mem_full_name_en }}
+                                    </div>
+                                    <div class="cell" data-title="Age">
+                                      {{ member.mem_current_points }}
+                                    </div>
+                                    <div class="cell" data-title="Job Title">
+                                      {{ member.mem_last_weekly_added_points }}
+                                    </div>
+                                  </div>
+                                  {% endfor %}
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>                  
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="heading">
+                <h1>Contact Us</h1>
+                <span>You can contact us by email or on Social Media Accounts</span> 
+              </div>
+              <div class="cd-half-width fivth-slide">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="content fivth-content">
+                        <div class="row">
+                          <div class="col-md-4">
+                            <div class="left-info">
+                              <p><br>
+                              <em>Club Manager: Ahmed Mohammed Ateeq</em>
+                              <br>
+                              <em>Phone Number: 0552448699</em>
+                              </p>
+                              <ul class="social-icons">
+                                <i><a href="https://www.youtube.com/channel/UCPKIVo86dN0G-Mq5gtTOiGQ"><i class="fa fa-youtube"></i></a></i>
+                                <i><a href="https://twitter.com/ccisclub_ksu"><i class="fa fa-twitter"></i></a></i>
+                                <i><a href="#"><i class="fa fa-linkedin"></i></a></i>
+                                <i><a href="https://www.snapchat.com/add/ccisclub_ksu"><i class="fa fa-snapchat"></i></a></i>
+                              </ul>
+                            </div>
+                          </div>
+                          <div class="col-md-8">
+                            <div class="row">
+                              <form id="contact" action="#" method="post">
+
+                                {% csrf_token %}
+
+                                <div class="col-md-6">
+                                  <fieldset>
+                                    <input name="name" type="text" class="form-control" id="name" placeholder="Name" required>
+                                  </fieldset>
+                                </div>
+                                <div class="col-md-6">
+                                  <fieldset>
+                                    <input name="email" type="email" class="form-control" id="email" placeholder="Email" required>
+                                  </fieldset>
+                                </div>
+                                <div class="col-md-12">
+                                  <fieldset>
+                                    <textarea name="message" rows="6" class="form-control" id="message" placeholder="Message" required></textarea>
+                                  </fieldset>
+                                </div>
+                                <div class="col-md-12">
+                                  <fieldset>
+                                    <button style="color: #ffffff;" type="submit" id="form-submit" class="btn">Send</button>
+                                  </fieldset>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>                  
+                </div>
+              </div>
+            </li>
+
+          </ul> <!-- .cd-hero-slider -->
+        </section> <!-- .cd-hero -->
+
+
+        <footer>
+          <p>Copyright &copy; 2019 SCC 
+                                
+          | Designed by <em>SCC Technical Team</em></p>
+        </footer>
+    
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="{% static 'home/js/vendor/jquery-1.11.2.min.js' %}"><\/script>')</script>
+
+        <script src="{% static 'home/js/vendor/bootstrap.min.js' %}"></script>
+        <script src="{% static 'home/js/plugins.js' %}"></script>
+        <script src="{% static 'home/js/main.js' %}"></script>
+
+        <!--===============================================================================================-->  
+        <script src="{% static 'home/table/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+      <!--===============================================================================================-->
+        <script src="{% static 'home/table/vendor/bootstrap/js/popper.js' %}"></script>
+        <script src="{% static 'home/table/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+      <!--===============================================================================================-->
+        <script src="{% static 'home/table/vendor/select2/select2.min.js' %}"></script>
+      <!--===============================================================================================-->
+        <script src="{% static 'home/table/js/main.js' %}"></script>
+
+    </body>
+</html>
